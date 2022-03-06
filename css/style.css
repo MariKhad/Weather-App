@@ -206,10 +206,10 @@ nav{
 }
 
 .weather__now--img{
-	width: 78px;
-	height: 59px;
+	width: 80px;
+	height: 80px;
 	align-self: center;
-	margin: 56px 111px 56px 111px
+	margin: 45px 110px 45px 110px;
 }
 
 .weather__details{
