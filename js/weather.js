@@ -25,7 +25,6 @@ function deleteClassesActive(){
 for (let tab of WEATHER_UI.TABS){
     tab.addEventListener('click', function (){
         deleteClassesActive();
-		alert("Один из табов нажат");
         tab.classList.add('weather__tabs--btnActive');
     })
 }
