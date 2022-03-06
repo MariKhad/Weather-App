@@ -28,6 +28,7 @@ for (let tab of WEATHER_UI.TABS){
         tab.classList.add('weather__tabs--btnActive');
 		  const href = tab.getAttribute('href').slice(1);
 		  const id = "#" + href;
+		  console.log("нажата клавиша");
 		  document.querySelectorAll('.active').forEach(el => el.classList.remove('active'));
         document.querySelector(id).classList.add('active');
     })
