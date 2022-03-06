@@ -233,11 +233,6 @@ nav{
 }
 
 
-
-.weather__display:target{
-	display:block;
-}
-
 .weather__now--save{
 	padding: 17px 12px;
 	display: flex;
@@ -290,4 +285,8 @@ nav{
 .forecast__parameters{
 	order: 2;
 	font-size: inherit;
+}
+
+.active{
+	display: block;
 }
