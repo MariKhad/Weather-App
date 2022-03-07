@@ -31,7 +31,7 @@ function addZero(time) {
 	if (time < 10) {
 		time = "0" + String(time);
 	}
-   return time;
+	return time;
 }
 
 
@@ -49,44 +49,44 @@ for (let tab of WEATHER_UI.TABS) {
 }
 
 WEATHER_UI.BTN_SEARCH.addEventListener('click', async function () {
-	cityName = (WEATHER_UI.SEARCH_INPUT.value).toLowerCase();
-	const url = `${serverUrl}?q=${cityName}&appid=${apiKey}`;
-	let response = await fetch(url);
-	if (response.ok) {
-		let json = await response.json();
-		let temp = json.main.temp;
-		temp = tempRound(temp);
-		WEATHER_UI.NOW_TEMP.textContent = temp + "°";
-		WEATHER_UI.DETAILS_TEMP.textContent = "Temperature: " + temp + "°";
-		let feels = json.main.feels_like;
-		feels = tempRound(feels);
-		WEATHER_UI.DETAILS_FEELS.textContent = "Feels like: " + feels + "°";
-		let pres = json.weather[0].main;
-		WEATHER_UI.DETAILS_PRES.textContent = "Weather: " + pres;
-		let rise = (json.sys.sunrise);
-		let rise_time = new Date(rise * 1000);
-		let rise_hours = rise_time.getHours();
-		rise_hours = addZero(rise_hours);
-		alert(rise_hours);
-		let rise_minutes = 0 + rise_time.getMinutes();
-		rise_minutes = addZero(rise_minutes);
-		WEATHER_UI.DETAILS_SUNRISE.textContent = "Sunrise: " + rise_hours + ":" + rise_minutes;
-		let set = (json.sys.sunset);
-		let set_time = new Date(set * 1000);
-		let set_hours = set_time.getHours();
-		set_hours = addZero(set_hours);
-		alert(set_hours);
-		let set_minutes = 0 + set_time.getMinutes();
-		set_minutes = addZero(set_minutes);
-		WEATHER_UI.DETAILS_SUNSET.textContent = "Sunset: " + set_hours + ":" + set_minutes;
-		let srcUrl = `http://openweathermap.org/img/w/${json.weather[0].icon}.png`;
-		WEATHER_UI.NOW_IMG.src = srcUrl;
-		for (let city of WEATHER_UI.CITY_NAME) {
-			city.textContent = json.name;
-		}
+	if (WEATHER_UI.SEARCH_INPUT.value !== "") {
+		cityName = (WEATHER_UI.SEARCH_INPUT.value).toLowerCase();
+		const url = `${serverUrl}?q=${cityName}&appid=${apiKey}`;
+		let response = await fetch(url);
+		if (response.ok) {
+			let json = await response.json();
+			let temp = json.main.temp;
+			temp = tempRound(temp);
+			WEATHER_UI.NOW_TEMP.textContent = temp + "°";
+			WEATHER_UI.DETAILS_TEMP.textContent = "Temperature: " + temp + "°";
+			let feels = json.main.feels_like;
+			feels = tempRound(feels);
+			WEATHER_UI.DETAILS_FEELS.textContent = "Feels like: " + feels + "°";
+			let pres = json.weather[0].main;
+			WEATHER_UI.DETAILS_PRES.textContent = "Weather: " + pres;
+			let rise = (json.sys.sunrise);
+			let rise_time = new Date(rise * 1000);
+			let rise_hours = rise_time.getHours();
+			rise_hours = addZero(rise_hours);
+			let rise_minutes = 0 + rise_time.getMinutes();
+			rise_minutes = addZero(rise_minutes);
+			WEATHER_UI.DETAILS_SUNRISE.textContent = "Sunrise: " + rise_hours + ":" + rise_minutes;
+			let set = (json.sys.sunset);
+			let set_time = new Date(set * 1000);
+			let set_hours = set_time.getHours();
+			set_hours = addZero(set_hours);
+			let set_minutes = 0 + set_time.getMinutes();
+			set_minutes = addZero(set_minutes);
+			WEATHER_UI.DETAILS_SUNSET.textContent = "Sunset: " + set_hours + ":" + set_minutes;
+			let srcUrl = `http://openweathermap.org/img/w/${json.weather[0].icon}.png`;
+			WEATHER_UI.NOW_IMG.src = srcUrl;
+			for (let city of WEATHER_UI.CITY_NAME) {
+				city.textContent = json.name;
+			}
 
-	} else {
-		alert("Ошибка HTTP: " + response.status);
+		} else {
+			alert("Ошибка HTTP: " + response.status);
+		}
 	}
 });
 
