@@ -34,7 +34,15 @@ function addZero(time) {
 	return time;
 }
 
-
+function getDate(unix) {
+	let time = new Date(unix * 1000);
+	let hours = time.getHours();
+	hours = addZero(hours);
+	let minutes = 0 + time.getMinutes();
+	minutes = addZero(minutes);
+	let fullTime = hours + ":" + minutes;
+	return fullTime;
+}
 
 for (let tab of WEATHER_UI.TABS) {
 	tab.addEventListener('click', function () {
@@ -42,7 +50,6 @@ for (let tab of WEATHER_UI.TABS) {
 		tab.classList.add('weather__tabs--btnActive');
 		const href = tab.getAttribute('href').slice(1);
 		const id = "#" + href;
-		console.log("нажата клавиша");
 		document.querySelectorAll('.active').forEach(el => el.classList.remove('active'));
 		document.querySelector(id).classList.add('active');
 	})
@@ -58,6 +65,11 @@ WEATHER_UI.BTN_SEARCH.addEventListener('click', async function () {
 			let temp = json.main.temp;
 			temp = tempRound(temp);
 			WEATHER_UI.NOW_TEMP.textContent = temp + "°";
+			let srcUrl = `http://openweathermap.org/img/w/${json.weather[0].icon}.png`;
+			WEATHER_UI.NOW_IMG.src = srcUrl;
+			for (let city of WEATHER_UI.CITY_NAME) {
+				city.textContent = json.name;
+			}
 			WEATHER_UI.DETAILS_TEMP.textContent = "Temperature: " + temp + "°";
 			let feels = json.main.feels_like;
 			feels = tempRound(feels);
@@ -65,25 +77,11 @@ WEATHER_UI.BTN_SEARCH.addEventListener('click', async function () {
 			let pres = json.weather[0].main;
 			WEATHER_UI.DETAILS_PRES.textContent = "Weather: " + pres;
 			let rise = (json.sys.sunrise);
-			let rise_time = new Date(rise * 1000);
-			let rise_hours = rise_time.getHours();
-			rise_hours = addZero(rise_hours);
-			let rise_minutes = 0 + rise_time.getMinutes();
-			rise_minutes = addZero(rise_minutes);
-			WEATHER_UI.DETAILS_SUNRISE.textContent = "Sunrise: " + rise_hours + ":" + rise_minutes;
+			rise = getDate(rise);
+			WEATHER_UI.DETAILS_SUNRISE.textContent = "Sunrise: " + rise;
 			let set = (json.sys.sunset);
-			let set_time = new Date(set * 1000);
-			let set_hours = set_time.getHours();
-			set_hours = addZero(set_hours);
-			let set_minutes = 0 + set_time.getMinutes();
-			set_minutes = addZero(set_minutes);
-			WEATHER_UI.DETAILS_SUNSET.textContent = "Sunset: " + set_hours + ":" + set_minutes;
-			let srcUrl = `http://openweathermap.org/img/w/${json.weather[0].icon}.png`;
-			WEATHER_UI.NOW_IMG.src = srcUrl;
-			for (let city of WEATHER_UI.CITY_NAME) {
-				city.textContent = json.name;
-			}
-
+			set = getDate(set);
+			WEATHER_UI.DETAILS_SUNSET.textContent = "Sunset: " + set;
 		} else {
 			alert("Ошибка HTTP: " + response.status);
 		}
