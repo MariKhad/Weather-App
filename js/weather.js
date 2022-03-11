@@ -33,7 +33,7 @@ function getSavedActive() {
    for (let city of SAVED) {
 		city.addEventListener('click', function (event) {
 			cityName = event.target.textContent;
-			WEATHER_UI.SEARCH_INPUT.value = cityName
+			WEATHER_UI.SEARCH_INPUT.value = cityName;
 			WEATHER_UI.BTN_SEARCH.click();
 		})
 }
