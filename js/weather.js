@@ -24,24 +24,21 @@ WEATHER_UI.SAVED_BTN.addEventListener('click', async function () {
 	btnCityDel.classList.add('weather__city--del');
 	li.append(btnCity);
 	li.append(btnCityDel);
-	ul.append(li);
+	ul.prepend(li);
 	
 });
 
-function getSavedActive (){
-	const SAVED = getLiveSaveList();
+function getSavedActive() {
+	const SAVED = document.getElementsByClassName('.weather__city');
    for (let city of SAVED) {
 		city.addEventListener('click', function (event) {
 			cityName = event.target.textContent;
-			WEATHER_UI.SEARCH_INPUT.value = cityName;
+			WEATHER_UI.SEARCH_INPUT.value = cityName
 			WEATHER_UI.BTN_SEARCH.click();
 		})
 }
 }
 
-function getLiveSaveList(){
-	return document.querySelectorAll('.weather__city');
-}
 
 
 
@@ -116,7 +113,6 @@ WEATHER_UI.BTN_SEARCH.addEventListener('click', async function () {
 			set = getDate(set);
 			WEATHER_UI.DETAILS_SUNSET.textContent = "Sunset: " + set;
 		} else {
-			console.log("Ошибка HTTP: " + response.status);
 			alert("Ошибка HTTP: " + response.status);
 		}
 	}
