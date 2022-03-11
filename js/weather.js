@@ -1,16 +1,49 @@
 import { WEATHER_UI } from './view.js';
+addEventListener('DOMContentLoaded', getSavedActive);
 
 const serverUrl = 'https://api.openweathermap.org/data/2.5/weather';
 const apiKey = 'f660a2fb1e4bad108d6160b7f58c555f';
 let cityName;
+const saved = document.querySelectorAll('.weather__city');
+const List = Array.from(saved);
+const cityList = [];
+List.forEach(city => cityList.push(city.textContent));
+console.log(WEATHER_UI.SAVED_LIST)
 
-for (let city of WEATHER_UI.SAVED) {
-	city.addEventListener('click', function (event) {
-		cityName = event.target.textContent;
-		WEATHER_UI.SEARCH_INPUT.value = cityName;
-		WEATHER_UI.BTN_SEARCH.click();
-	})
+
+
+WEATHER_UI.SAVED_BTN.addEventListener('click', async function () {
+	cityName = WEATHER_UI.SEARCH_INPUT.value;
+	alert(cityName);
+	cityList.push(cityName);
+	let li = document.createElement('li')
+	let btnCity = document.createElement('button');
+	let btnCityDel = document.createElement('button');
+	btnCity.textContent = cityName;
+	btnCity.classList.add('weather__city');
+	btnCityDel.classList.add('weather__city--del');
+	li.append(btnCity);
+	li.append(btnCityDel);
+	ul.append(li);
+	
+});
+
+function getSavedActive (){
+	const SAVED = getLiveSaveList();
+   for (let city of SAVED) {
+		city.addEventListener('click', function (event) {
+			cityName = event.target.textContent;
+			WEATHER_UI.SEARCH_INPUT.value = cityName;
+			WEATHER_UI.BTN_SEARCH.click();
+		})
 }
+}
+
+function getLiveSaveList(){
+	return document.querySelectorAll('.weather__city');
+}
+
+
 
 function deleteClassesActive() {
 	for (let tab of WEATHER_UI.TABS) {
@@ -83,8 +116,8 @@ WEATHER_UI.BTN_SEARCH.addEventListener('click', async function () {
 			set = getDate(set);
 			WEATHER_UI.DETAILS_SUNSET.textContent = "Sunset: " + set;
 		} else {
+			console.log("Ошибка HTTP: " + response.status);
 			alert("Ошибка HTTP: " + response.status);
 		}
 	}
 });
-
