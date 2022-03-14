@@ -4,8 +4,9 @@ const serverUrl = 'https://api.openweathermap.org/data/2.5/weather';
 const apiKey = 'f660a2fb1e4bad108d6160b7f58c555f';
 let cityName;
 let savedCities = document.querySelectorAll('.weather__city');
+let savedCitiesBtns = document.querySelectorAll('.weather__city--del');
 const List = Array.from(savedCities);
-const cityList = [];
+let cityList = [];
 List.forEach(city => cityList.push(city.textContent));
 
 
@@ -64,6 +65,7 @@ function getSaved() {
 		li.append(btnCityDel);
 		ul.prepend(li);
 		savedCities = document.querySelectorAll('.weather__city');
+		savedCitiesBtns = document.querySelectorAll('.weather__city--del');
 		for (let city of savedCities) {
 			city.addEventListener('click', function (event) {
 				cityName = event.target.textContent;
@@ -75,10 +77,17 @@ function getSaved() {
 	}
 };
 
-WEATHER_UI.BTNS_DEL.addEventListener('click', function (event) {
-	cityName = event.target.previousSibling.textContent;
-	alert(cityName);
-});
+for (let btn of savedCitiesBtns) {
+	btn.addEventListener('click', function (event) {
+		const targetCity = event.target;
+		cityName = targetCity.previousSibling.textContent;
+		alert(cityName);
+		cityList = cityList.filter(item => item !== cityName);
+		targetCity.parentNode.remove();
+		savedCities = document.querySelectorAll('.weather__city');
+		savedCitiesBtns = document.querySelectorAll('.weather__city--del');
+	});
+}
 
 
 
