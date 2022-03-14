@@ -20,7 +20,7 @@
 		<div class="container">
 			<div class="weather__body">
 				<div class="weather__item1">
-					<form onsubmit= "return" false>
+					<form onsubmit= "return false">
 						<input class="weather__city--input" value="Aktobe" placeholder="Enter the city">
 						<button type="submit" class="weather__btn--search"></button>
 					</form>
@@ -65,73 +65,7 @@
 							Aktobe
 						</h3>
 						<div class="weather__forecast--list">
-							<ul class="forecast__list">
-								<li class="forecast__list--item">
-									<div class="forecast__day">
-										17 May
-									</div>
-									<div class="forecast__time">
-										12:00
-									</div>
-									<div class="forecast__parameters">
-										<p class="forecast__temp">
-											Temperature: 13°
-										</p>
-										<p class="forecast__feels">
-											Feels like: 10°
-										</p>
-									</div>
-									<div class="forecast__precipitatios">
-										<p class="forecast__precipitatios--text">
-											Rain
-										</p>
-										<img src="./img/rain.png" alt="weather icon" class="forecast__precipitatios--img">
-									</div>
-								</li>
-								<li class="forecast__list--item">
-									<div class="forecast__day">
-										17 May
-									</div>
-									<div class="forecast__time">
-										12:00
-									</div>
-									<div class="forecast__parameters">
-										<p class="forecast__temp">
-											Temperature: 13°
-										</p>
-										<p class="forecast__feels">
-											Feels like: 10°
-										</p>
-									</div>
-									<div class="forecast__precipitatios">
-										<p class="forecast__precipitatios--text">
-											Rain
-										</p>
-										<img src="./img/rain.png" alt="weather icon" class="forecast__precipitatios--img">
-									</div>
-								</li>
-								<li class="forecast__list--item">
-									<div class="forecast__day">
-										17 May
-									</div>
-									<div class="forecast__time">
-										12:00
-									</div>
-									<div class="forecast__parameters">
-										<p class="forecast__temp">
-											Temperature: 13°
-										</p>
-										<p class="forecast__feels">
-											Feels like: 10°
-										</p>
-									</div>
-									<div class="forecast__precipitatios">
-										<p class="forecast__precipitatios--text">
-											Rain
-										</p>
-										<img src="./img/rain.png" alt="weather icon" class="forecast__precipitatios--img">
-									</div>
-								</li>
+							<ul class="forecast__list" id = "listForecast">
 							</ul>
 						</div>
 					</div>

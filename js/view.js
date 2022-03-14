@@ -15,5 +15,5 @@ export const WEATHER_UI = {
 	SAVED_LIST: document.querySelector('.weather_item4'),
 	//BTNS_DEL: document.querySelectorAll('.weather__city--del'),
 	FORM: document.querySelector('form'),
-	UL: document.querySelector('ul'),
+	UL: document.querySelector('weather__forecast--list'),
 }

@@ -171,7 +171,7 @@ ul {
 	color: inherit;
 }
 
-.weather__tabs--btnActive {
+.weather__tabs--btnactive {
 	background-color: #000;
 	color: white
 }
