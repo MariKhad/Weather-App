@@ -36,7 +36,7 @@ async function getData() {
 			})
 			.catch(err => alert(err))
 	} else {
-		alert("Entry the city, please")
+		alert("Enter the city, please")
 	}
 }
 
