@@ -150,7 +150,6 @@ function savedCityDelete() {
 		btn.addEventListener('click', function (event) {
 			const targetCity = event.target;
 			cityName = targetCity.previousSibling.textContent;
-			alert(cityName);
 			cityList = cityList.filter(item => item !== cityName);
 			targetCity.parentNode.remove();
 			savedCities = document.querySelectorAll('.weather__city');
