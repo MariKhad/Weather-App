@@ -1,6 +1,7 @@
 import { WEATHER_UI } from './view.js';
 addEventListener('DOMContentLoaded', savedCityShow);
 addEventListener('DOMContentLoaded', savedCityDelete);
+addEventListener('DOMContentLoaded', getData);
 
 const WEATHER_URL = 'https://api.openweathermap.org/data/2.5/weather';
 const FORECAST_URL = 'https://api.openweathermap.org/data/2.5/forecast';
