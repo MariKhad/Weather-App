@@ -193,6 +193,10 @@ nav{
 	border: none;
 	cursor: pointer;
 }
+.weather__now--btn:active{
+	background: url('../img/heart_active.png');
+}
+
 .weather__now{
 	display: flex;
 	flex-direction: column;
@@ -242,6 +246,7 @@ nav{
 	justify-content: space-between;
 	align-items: center;
 }
+
 
 .forecast__precipitatios--img{
 	width:31px;
