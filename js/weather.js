@@ -48,7 +48,7 @@ async function getWeather() {
 
 WEATHER_UI.SAVED_BTN.addEventListener('click', getSaved);
 
-function getSaved () {
+function getSaved() {
 	cityName = WEATHER_UI.SEARCH_INPUT.value;
 	if (cityList.find(item => item === cityName)) {
 		alert("This city is already in the list");
@@ -75,6 +75,10 @@ function getSaved () {
 	}
 };
 
+WEATHER_UI.BTNS_DEL.addEventListener('click', function (event) {
+	cityName = event.target.previousSibling.textContent;
+	alert(cityName);
+});
 
 
 

@@ -13,7 +13,7 @@ export const WEATHER_UI = {
 	DETAILS_SUNRISE: document.querySelector('.details__sunrise'),
 	DETAILS_SUNSET: document.querySelector('.details__sunset'),
 	SAVED_LIST: document.querySelector('.weather_item4'),
-	BTN_DEL: document.querySelectorAll('.weather__city--del'),
+	BTNS_DEL: document.querySelectorAll('.weather__city--del'),
 	FORM: document.querySelector('form'),
 	UL: document.querySelector('ul'),
 }
